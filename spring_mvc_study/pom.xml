@@ -16,8 +16,14 @@
 	</properties>
 	<dependencies>
 
+		<!-- minini 마이바티스 설정 -->
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.4.1</version>
 
-
+		</dependency>
+		<!-- minini 마이바티스 설정 -->
 
 		<!-- Spring -->
 		<dependency>
@@ -63,7 +69,7 @@
 			<version>${org.slf4j-version}</version>
 			<scope>runtime</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
@@ -87,7 +93,7 @@
 				</exclusion>
 			</exclusions>
 			<scope>runtime</scope>
-		</dependency> 
+		</dependency>
 
 		<!-- @Inject -->
 		<dependency>
