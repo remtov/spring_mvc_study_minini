@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring/root-context.xml</param-value>
+	</context-param>
+
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!-- Processes application requests -->
+	<servlet>
+
+		<!-- 디스페쳐서블렛 -->
+		<servlet-name>appServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!--결과가 서블렛에서 주소완성뒤 이곳을 거쳐 뷰로넘어간다/디스페쳐서블렛 Controller로 요청이 넘어가기 전에 DispatcherServlet이 
+			그 요청을 가로챈다. 가로챈 요청은 아래의 <init-param> 부분에 있는 servlet-context.xml로 전달된다. -->
+
+		<init-param>
+
+			<!-- 서블렛 컨텍스트-디스베쳐서블렛이 사용할 자원 -->
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+			<!-- 서블렛 컨텍스트-디스베쳐서블렛이 사용할 자원 -->
+
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping><!-- 요청 URL 패턴을 지정하는 부분. -->
+		<servlet-name>appServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+</web-app>
+<!-- 웹 애플리케이션의 실행 환경에 관련된 각종 설정 정보/브라우저의 요청을 가장 먼저 처리하는 곳이 web.xml이다. 현재 
+	여기에는 필터가 없는데, 필터가 있다면 가장 먼저 반응을 하여 특정 작업을 처리하게 된다. 출처: http://all-record.tistory.com/165?category=733072 
+	[세상의 모든 기록] -->

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans
+	xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+	<annotation-driven /><!-- 이 설정을 통해 URL 매핑이 일어난다. @RequestMapping을 사용할 수 
+		있게 되고, 지정된 URL로 브라우저의 요청 URL이 매핑되게 된다. RequestMappingHandlerMapping 와 RequestMappingHandlerAdapter, 
+		ExceptionHandlerExceptionResolver로 구성되어 있다. -->
+
+	<resources mapping="/resources/**" location="/resources/" />
+
+<!-- 컨트롤러를 거쳐 결과값이 이곳을 거쳐서 주소로 완성된다 -->
+	<beans:bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+<!-- 컨트롤러를 거쳐 결과값이 이곳을 거쳐서 주소로 완성된다 -->
+
+	<context:component-scan
+		base-package="com.ict.erp" /><!--@Controller, @Repository, @Service, @Component 
+		어노테이션이 사용된 클래스를 자동으로 스캔하여 빈으로 등록 -->
+
+
+
+</beans:beans>
+<!-- HandlerMapping, HandlerAdapter의 작업 /브라우저의 요청으로부터 그 요청을 처리할 Controller를 
+	이어주는 작업 출처: http://all-record.tistory.com/165?category=733072 [세상의 모든 기록] -->
